@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="categoryDetail">
+	<insert id="insertCategoryDetail" parameterType="CategoryDetailVO">
+		insert into game_detail values (#{gameId}, #{detailId})
+	</insert>
+	
+	<delete id="deleteCagetoryDetail" parameterType="String">
+		delete from game_detail where game_id = #{gameId}
+	</delete>
+</mapper>

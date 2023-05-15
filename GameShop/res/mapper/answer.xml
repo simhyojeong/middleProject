@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="answer">
+
+	<resultMap type="AnswerVO" id="ansMap">
+		<result property="ansId" column="ans_id" />
+		<result property="adminId" column="admin_id" />
+		<result property="qesId" column="qes_id" />
+		<result property="ansCont" column="ans_cont" />
+		<result property="ansDate" column="ans_date" />
+	</resultMap>
+
+	<select id="selectAllAnswer" resultType="AnswerVO">
+		select *
+		from answer
+	</select>
+
+<!-- 	<select id="getQesId" resultMap="ansMap"> -->
+<!-- 		select qes_id  -->
+<!-- 		from answer  -->
+<!-- 		where qes_id = #{qesId} -->
+<!-- 	</select> -->
+
+	<select id="getAnswer" parameterType="String" resultMap="ansMap">
+		select * 
+		from answer 
+		where qes_id = #{qesId}
+	</select>
+
+	<insert id="insertAnswer" parameterType="AnswerVO">
+		insert into 
+		answer(ans_id, admin_id, qes_id, ans_cont, ans_date) 
+		values(( 'ans' || ans_seq.nextval ), 'admin', #{qesId}, #{ansCont}, sysdate)
+	</insert>
+
+	<update id="updateAnswer" parameterType="AnswerVO">
+		update answer 
+		set ans_cont = #{ansCont}, ans_date = sysdate
+		where qes_id = #{qesId}
+	</update>
+
+	<delete id="deleteAnswer" parameterType="String">
+		delete from answer 
+		where qes_id = #{qesId}
+	</delete>
+
+</mapper>

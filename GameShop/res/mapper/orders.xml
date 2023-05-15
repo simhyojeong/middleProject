@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="orders">
+
+	<!-- 멤버 아이디를 파라미터로 갖고 그 멤버가 장바구니에 담은 모든 게임 아이디를 가져옴 -->
+	<select id="getGamesOfMyCart" parameterType="String" resultType="GameVO">
+		select b.game_id 
+		from cart a 
+		inner join cart_game b 
+		on(a.CART_ID = b.CART_ID) 
+		where a.mem_id = #{memId}
+	</select>
+
+	<!-- 장바구니에 있는 게임들의 정보 -->
+	<select id="getGamesInfo" parameterType="String" resultType="GameVO">
+		select game_id, game_name, game_price, game_img, age_grade 
+		from game 
+		where game_id = #{gameId}
+	</select>
+
+	<!-- memId를 이용해서 name, email, phone 찾아주기 -->
+	<select id="getMemInfo" parameterType="String" resultType="MemberVO">
+		select mem_id, mem_name, mem_mail, mem_ph 
+		from member 
+		where mem_id = #{memId}
+	</select>
+
+	<!-- 특정 사용자가 구매 완료한 게임의 game_id -->
+	<select id="getOrderedGameId" parameterType="String" resultType="String">
+		select game_id 
+		from cart_game 
+		where cart_id in (
+		select b.cart_id 
+		from CART a 
+		inner join orders b 
+		on (a.CART_ID = b.CART_ID) 
+		where a.mem_id = #{memId}) 
+	</select>
+
+	<!-- 구매 완료하고 나서 구매정보를 ORDER 테이블에 삽입 -->
+	<insert id="insertOrder" parameterType="String">
+		insert into orders values(( 'order' || order_seq.nextval ), #{cartId}, sysdate)
+	</insert>
+
+	<!-- gameId가 주어질때 카트번호 -->
+	<select id="getCartId" parameterType="OrderVO" resultType="String">
+		select a.cart_id 
+		from cart_game a 
+		inner join cart b 
+		on (a.cart_id = b.cart_id) 
+		where a.game_id= #{gameId} and b.mem_id= #{memId}
+	</select>
+
+
+	<select id="orderExist" parameterType="String" resultType="String">
+		select cart_id 
+		from orders 
+		where cart_id = #{cartId} 
+	</select>
+
+	<select id="getOrderList" parameterType="String" resultType="OrderVO">
+		select b.order_id, a.cart_id, b.order_date, g.game_id, g.game_name, g.game_price, c.mem_id
+		from cart a, orders b, member c, cart_game d, 
+		(select e.cart_id, f.game_id, f.game_price, f.game_name from cart_game e, game f 
+		where e.game_id = f.game_id) g 
+		where a.cart_id = d.cart_id 
+		and a.cart_id = b.cart_id 
+		and a.mem_id = c.mem_id 
+		and a.cart_id = g.cart_id 
+		and c.mem_id = #{memId} 
+	</select>
+	
+	<select id="getBillList" parameterType="String" resultType="OrderVO">
+ 		select b.order_id, a.cart_id, b.order_date, g.game_id, g.game_name, g.game_price, c.mem_id
+		from cart a, orders b, member c, cart_game d, 
+		(select e.cart_id, f.game_id, f.game_price, f.game_name from cart_game e, game f 
+		where e.game_id = f.game_id) g 
+		where a.cart_id = d.cart_id 
+		and a.cart_id = b.cart_id 
+		and a.mem_id = c.mem_id 
+		and a.cart_id = g.cart_id 
+	    and b.order_id = #{orderId}
+	</select>
+	
+</mapper>

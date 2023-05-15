@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  
+  <mapper namespace="question">
+  
+ 		<insert id="insertQuestion" parameterType="questions.question.vo.QuestionVO">
+		
+			insert into question
+            (qes_id, mem_id, qes_title, qes_cont, qes_date)
+            values (( 'qes' || qes_seq.nextval ), 
+            #{memId}, #{qesTitle}, #{qesCont}, sysdate)
+		
+		</insert>
+  
+  <resultMap type="QesVO" id="qesMap">
+			<result column="qes_id" property="qesId" />
+			<result column="qes_title" property="qesTitle" />
+			<result column="qes_cont" property="qesCont" />
+			<result column="mem_id" property="memId" />
+			<result column="qes_date" property="qesDate" />
+		</resultMap>
+
+		<select id="selectAllQuestion" resultType="QesVO">
+		
+<!-- 		 	select * -->
+<!-- 			from question -->
+<!-- 			order by qes_date desc -->
+				select q.qes_id,
+        				q.qes_title,
+        				q.qes_cont,
+        				q.mem_id,
+        				m.mem_name,
+        				q.qes_date
+				from question q, member m
+				where q.mem_id=m.mem_id
+				order by qes_date desc
+		</select>
+		
+		<select id="getQuestion" parameterType="String" resultMap="qesMap">
+			
+			select q.qes_id,
+        			q.qes_title,
+        			q.qes_cont,
+        			q.mem_id,
+        			m.mem_name,
+        			q.qes_date
+			from question q, member m
+			where q.mem_id=m.mem_id
+			and qes_id = #{qesId}
+		
+		</select>
+		
+		<update id="updateQuestion" parameterType="questions.question.vo.QuestionVO">
+		
+		update question
+		set qes_title =  #{qesTitle}, 
+		qes_cont = #{qesCont}, 
+		qes_date = sysdate
+		where qes_id = #{qesId}
+		
+		</update>
+		
+		<delete id="deleteQuestion" parameterType="String">
+		
+			delete from question
+			where qes_id = #{qesId}
+			
+		</delete>
+
+		<select id="countList" resultType="int">
+			SELECT COUNT(*) FROM QUESTION
+		</select>
+
+	<select id="questionList" resultType="QesVO">
+		select A.* from(
+			select ROWNUM AS RNUM, B.* from(
+				select q.qes_id,
+        				q.qes_title,
+        				q.qes_cont,
+        				q.mem_id,
+        				m.mem_name,
+        				q.qes_date
+				from question q, member m
+				where q.mem_id=m.mem_id
+				order by qes_date DESC
+			)B
+			<![CDATA[
+			where ROWNUM <= #{end}
+		)A
+		where A.rnum >= #{start}
+		]]>
+	</select>
+	
+	  
+  </mapper>

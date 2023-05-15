@@ -1,0 +1,342 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap');
+
+*{
+	box-sizing: border-box;
+	font-family: 'Poppins', sans-serif;
+}
+
+body {
+	background-color: #121212;
+}
+
+
+div {
+    display: block;
+}
+
+.column {
+    float: left;
+    padding: 10px;
+    min-height: 100vh;
+}
+
+.column.side {
+    width: 20%;
+    background-color: #121212;
+}
+
+.column.middle {
+    width: 60%;
+    background-color: #121212;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+.css-1ktypff {
+    color: rgb(245, 245, 245);
+    background: rgb(18, 18, 18);
+    position: relative;
+}
+
+.css-1n8met0 {
+    padding-top: 0;
+}
+
+.css-s45c7f {
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
+    max-width: 1600px;
+}
+
+.css-1sqqqs8 {
+    padding-bottom: 70px;
+}
+
+.css-13rr5ha {
+    width: 100%;
+    height: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    padding-top: 80px;
+    -webkit-flex-basis: auto;
+    -ms-flex-preferred-size: auto;
+    flex-basis: auto;
+    box-sizing: border-box;
+    align-items: center;
+}
+
+.css-1maza8v {
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-flex-basis: auto;
+    -ms-flex-preferred-size: auto;
+    flex-basis: auto;
+    flex-direction: row;
+}
+
+.css-r7crhi {
+	width: 315px;
+    min-width: 315px;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-content: center;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    margin-bottom: 34px;
+    min-width: 177px;
+    margin-right: 60px;
+}
+
+.css-qxp7yl {
+    font-size: 0;
+    border-radius: 4px;
+    overflow: hidden;
+    height: 409.5px;
+    width: 100%;
+    min-width: 100%;
+}
+
+.css-vlmy0g {
+    background-color: rgb(32, 32, 32);
+    -webkit-background-position: center;
+    background-position: center;
+    height: 100%;
+    width: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+
+.css-yt0psx {
+    display: block;
+    line-height: 0;
+    width: 42px;
+    height: 42px;
+}
+
+.css-w1atjl {
+    width: 100%;
+    height: 100%;
+}
+
+img, svg {
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    pointer-events: none;
+}
+
+img, svg {
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    pointer-events: none;
+}
+
+img, svg {
+    -webkit-user-drag: none;
+    user-select: none;
+    pointer-events: none;
+}
+
+.css-1sjbsj {
+    font-size: 10px;
+    letter-spacing: 0.2px;
+    line-height: 1.4;
+    color: rgba(245, 245, 245, 0.6);
+    margin-top: 12px;
+    display: none;
+    display: inline-block;
+}
+
+.css-8f26af {
+    padding: 10% 0;
+    text-align: left;
+}
+
+.css-1b54ppn {
+    padding-bottom: 12px;
+}
+
+.css-1ifcw8j {
+	color: rgb(245, 245, 245, 0.6);
+    font-size: 18px;
+    line-height: 25px;
+    letter-spacing: -0.5px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+    margin: 0;
+}
+
+.css-11ksoqt {
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0;
+    font-weight: normal;
+    transition: color 125ms ease-in-out;
+    color: rgba(245, 245, 245, 0.6);
+}
+
+.css-8nuajj {
+    margin-bottom: 26px;
+    margin-top: 0;
+}
+
+.css-1adx308 {
+    width: 100%;
+    position: relative;
+    padding-top: 20px;
+}
+
+.css-1d3w5wq {
+    width: 100%;
+}
+
+input, label, button, textarea {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    display: inline-block;
+    vertical-align: middle;
+    white-space: normal;
+    background: none;
+    line-height: 1;
+/*     font-family: Brutal,sans-serif; */
+/*     font-weight: 400; */
+    font-display: swap;
+}
+
+
+
+
+/* label { */
+/*     cursor: default; */
+/* } */
+
+/* input:not(:focus) { */
+/*     border-color: rgba(0, 0, 0, 0); */
+/* } */
+
+
+
+
+.css-34tx6k {
+    font-size: 30px;
+    letter-spacing: -0.3px;
+    line-height: 1.2;
+    text-align: left;
+    color: rgb(245, 245, 245);
+    background-color: transparent;
+    border: 0;
+    outline: 0;
+    width: 100%;
+}
+
+input, textarea {
+    box-sizing: content-box;
+}
+
+.css-1qwdmuy {
+    clip: rect(0 0 0 0);
+    -webkit-clip-path: inset(50%);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+.css-rqw2hw {
+    display: flex;
+    margin-top: 26px;
+}
+
+.css-vjyya4 {
+    font-size: 14px;
+    letter-spacing: 1px;
+    font-weight: 500;
+    display: inline-flex;
+    position: relative;
+    border-radius: 4px;
+    text-transform: uppercase;
+    text-align: center;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    line-height: 15px;
+    padding: 0px 20px;
+    height: 50px;
+    min-width: 200px;
+    cursor: default;
+    color: rgba(245, 245, 245, 0.6);
+    background-color: rgba(0, 116, 228, 0.6);
+}
+
+button {
+	writing-mode: horizontal-tb !important;
+	text-rendering: auto;
+	text-indent: 0px;
+    text-shadow: none;
+    word-spacing: normal;
+}
+
+
+
+.css-zfka1r {
+    font-size: 14px;
+    letter-spacing: 0.2px;
+    line-height: 1.4;
+    display: inline-block;
+    color: rgb(230, 60, 60);
+    width: 100%;
+    margin-bottom: 26px;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+

@@ -1,0 +1,99 @@
+
+#memberAdminList-body {
+    background-color: #121212;
+}
+.listbody{
+    color: white;
+}
+.container{
+    color: white;
+    width: 80%;
+}
+.tr{
+    color: white;
+}
+ul {
+    list-style:none;
+   
+} 
+li {
+    float: left;
+    margin-right: 20px;
+    color: white;
+   
+}
+.dataTables_length{
+    padding-top: 30px;
+}
+.col-sm-12{
+    padding-top: ;
+}
+.card-body{
+    width: ;
+
+}
+ul {
+    list-style:none;
+}
+ 
+li {
+    float: left;
+}
+.td {
+    width: 200px;
+    height: 60px;
+}
+.form-control{
+	width: 300px;
+}
+.container mt-3{
+	width: 400px;
+	height: 330px;
+}
+
+th{
+	color: white;
+}
+
+table{
+	width: 600px;
+}
+/* .pager li>a { */
+/*  background-color: transparent; */
+/*  color: #DC3545; */
+/*  border: none; */
+/*  text-decoration: underline; */
+/*   text-decoration-color: #DC3545; */
+/* } */
+/* .pagination>.active>a { */
+/*  background-color: transparent;	 */
+/* } */
+
+#pagenum {
+	color: #ddd;
+	border: none;
+	background: none;
+}
+
+#pagenum:hover {
+	color: #d32f2f;
+}
+#pagenum:active{
+	color: #d32f2f;
+}
+
+
+.pagenation >.page-link:active{
+	color: #d32f2f !important; 
+} 
+
+#pageList {
+	float:left;
+	text-align:center;
+	width: 100%;
+	margin-top: 50px;
+}
+
+
+
+

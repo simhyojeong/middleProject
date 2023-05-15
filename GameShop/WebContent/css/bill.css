@@ -1,0 +1,113 @@
+.bill-wrapper {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'hind', sans-serif;
+  text-decoration: none;
+  text-align: center;
+  
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+#bill-body {
+  background-color: #202020;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-x:hidden;
+  overflow-y:hidden;
+}
+
+form {
+  margin-top: 20px;
+}
+
+.footer {
+  margin-bottom: 20px;
+}
+
+a:link {
+  color: gold;
+}
+
+.container {
+  width: 500px;
+  height: auto;
+  background: #202020;
+  padding: 30px 60px;
+}
+
+.bill-head h2,p,.footer {
+  color: #f1f1f1;
+}
+
+
+.order-detail-head {
+  color: rgb(254, 224, 57);
+  font-weight: bolder;
+}
+
+table {
+  border-spacing: 5px;
+}
+
+#table-bottom {
+  margin-top: 20px;
+}
+
+/*줄 위아래 간격*/
+hr {
+  margin-top: 9px;
+  margin-bottom: 9px;
+}
+
+/*border: 1px solid darkcyan ;*/
+tr,
+th,
+td {
+  text-align: left;
+  border-collapse: collapse;
+}
+
+#cell-name {
+  width: 230px;
+}
+
+#cell-blank {
+  width: 60px;
+}
+
+
+#cell-price {
+  width: 130px;
+}
+
+#cell-date {
+	width : 200px;
+}
+.cell-data {
+  width: 170px;
+}
+
+.cell-total,
+#cell-price {
+  text-align: right;
+}
+
+.table {
+  color: #f1f1f1;
+  font-size: 13px;
+}
+
+
+#first-p {
+	margin-bottom : 0%;
+}
+#footer-p {
+	margin-top : 0% !important;
+}

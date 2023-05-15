@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="game">
+
+	<select id="allGameList" resultType="gameVO">
+		select * from game order by	game_date desc
+	</select>
+
+	<select id="nextGameId" resultType="String">
+		select ( 'game' || game_seq.nextval ) from dual
+	</select>
+
+	<select id="getGameList" parameterType="GameSearchVO"
+		resultType="gameVO">
+		select a.game_id, a.game_name, a.game_price, a.game_img, a.age_grade 
+		from game a, game_detail b, category_detail c 
+		where a.game_id = b.game_id 
+		and	b.detail_id = c.detail_id  
+		<if test="detailId1 != null and detailId1 != ''">
+			and b.detail_id = #{detailId1} 
+		</if>
+		<if test="detailId2 != null and detailId2 != ''">
+			and a.game_id IN ( 
+			select a.game_id  
+			from game a, game_detail b, category_detail c  
+			where a.game_id = b.game_id  
+			and b.detail_id = c.detail_id 
+			and b.detail_id = #{detailId2}) 
+		</if>
+		<if test="detailId3 != null and detailId3 != ''">
+			and a.game_id IN ( 
+			select a.game_id  
+			from game a, game_detail b, category_detail c  
+			where a.game_id = b.game_id  
+			and b.detail_id = c.detail_id  
+			and b.detail_id = #{detailId3}) 
+		</if>
+		<if test="detailName1 != null and detailName1 != ''">
+			and c.detail_name like '%' || #{detailName1} || '%' 
+		</if>
+		<if test="detailName2 != null and detailName2 != ''">
+			and c.detail_name like '%' || #{detailName2} || '%' 
+		</if>
+		<if test="detailName3 != null and detailName3 != ''">
+			and c.detail_name like '%' || #{detailName3} || '%' 
+		</if>
+		<if test="gamePrice != null and gamePrice != ''">
+			and a.game_price &lt;= #{gamePrice} 
+		</if>
+		order by 1
+	</select>
+
+
+	<select id="getGameInfo" parameterType="String"
+		resultType="gameVO">
+		select game_id, game_name, game_price, game_img, age_grade 
+		from game 
+		where lower(game_name) like lower('%'|| #{gameName} ||'%' )
+	</select>
+
+	<select id="getDetailGameInfo" parameterType="String"
+		resultType="gameDetailVO">
+		select a.game_id, a.game_name, a.game_price, a.game_date, 
+		a.age_grade, a.game_video, a.game_img, a.game_dev, 
+		c.detail_name, d.cate_name, f.pub_name 
+		from game a, game_detail b, category_detail c, 
+		category d, publish e, publisher f 
+		where a.game_id = b.game_id 
+		and	b.detail_id = c.detail_id 
+		and c.cate_id = d.cate_id 
+		and a.game_id =	e.game_id 
+		and e.pub_id = f.pub_id 
+		and	a.game_id = #{gameId}
+	</select>
+
+	<select id="getGameCode" parameterType="String"
+		resultType="String">
+		SELECT A.GAME_ID 
+		FROM GAMECODE A, GAME B 
+		WHERE A.GAME_ID = B.GAME_ID 
+		AND A.GAME_CODE = #{gameCode}
+	</select>
+
+	<insert id="insertGame" parameterType="gameVO">
+		insert into 
+		game(game_id, game_name, game_price, game_date, game_dev, game_img, game_video, age_grade)
+		values(( 'game' || game_seq.nextval ), #{gameName}, #{gamePrice}, #{gameDate}, #{gameDev}, #{gameImg}, #{gameVideo}, #{ageGrade})
+	</insert>
+	
+	<update id="updateGame" parameterType="gameVO">
+		update game
+		set	game_name = #{gameName},
+		game_price = #{gamePrice},
+		game_date = #{gameDate},
+		game_dev = #{gameDev},
+		game_img = #{gameImg},
+		game_video = #{gameVideo},
+		age_grade = #{ageGrade} 
+		where game_id = #{gameId}
+	</update>
+
+	<delete id="deleteGame" parameterType="String">
+		delete from game where 
+		game_id = #{gameId} 
+	</delete>
+
+	<select id="getCodeOrderGame" parameterType="String" resultType="String">
+		select c.game_id 
+		from member a, cart b, cart_game c, orders d 
+		where a.mem_id = b.mem_id 
+		and b.cart_id = c.cart_id 
+		and c.cart_id =	d.cart_id
+		and a.mem_id = #{memId}
+	</select>
+	
+	<update id="updateGameCode" parameterType="GameCodeVO">
+		update game_code 
+		set code_use = 'o' 
+		where game_id = #{gameId} 
+		and game_code = #{gameCode}
+	</update>
+	
+	<insert id="insertDiscount" parameterType="DiscountVO">
+		insert into discount
+		values(( 'dis' || dis_seq.nextval ), #{gameId} ,#{disStart}, #{disEnd})
+	</insert>
+
+	<select id="isDiscountId" parameterType="String" resultType="String">
+		select game_id from discount where game_id = #{gameId}
+	</select>
+	
+	<select id="nextDiscountId" resultType="String">
+	select count(*) from discount
+	</select>
+	
+</mapper>

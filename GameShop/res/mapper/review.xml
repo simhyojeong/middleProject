@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="review">
+
+	<resultMap type="MyReviewVO" id="myRevMap">
+		<result column="rev_id" property="revId"/>
+		<result column="game_id" property="gameId"/>
+		<result column="mem_id" property="memId"/>
+		<result column="mem_name" property="memName"/>
+		<result column="game_name" property="gameName"/>
+		<result column="game_img" property="gameImg"/>
+		<result column="rev_title" property="revTitle"/>
+		<result column="rev_cont" property="revCont"/>
+		<result column="rev_date" property="revDate"/>
+		<result column="rev_grade" property="revGrade"/>
+	</resultMap>
+
+	<insert id="insertReview" parameterType="MyReviewVO">
+		INSERT INTO REVIEW 
+		(rev_id, game_id, mem_id, rev_title, rev_cont, rev_date, rev_grade) 
+		VALUES(('rev' || rev_seq.nextval), #{gameId}, #{memId}, #{revTitle}, #{revCont}, sysdate, #{revGrade})
+	</insert>
+	
+	<update id="updateReview" parameterType="MyReviewVO">
+		update review 
+		set 
+		rev_title = #{revTitle},
+		rev_cont = #{revCont},
+<!-- 		rev_date = TO_CHAR(SYSDATE, 'YYYY-MM-DD'), -->
+		rev_date = sysdate,
+		rev_grade = #{revGrade} 
+		where mem_id = #{memId} 
+		and game_id = #{gameId} 
+		and rev_id = #{revId} 
+		
+	</update>
+	
+<!--리뷰찾기 -->
+		<select id="searchReviewList" resultType="MyReviewVO">
+		SELECT B.REV_ID, A.GAME_ID, B.MEM_ID, A.GAME_NAME, A.GAME_IMG, 
+		b.REV_TITLE, B.REV_CONT, B.REV_DATE, B.REV_GRADE 
+		FROM GAME A, REVIEW B 
+		WHERE A.GAME_ID = B.GAME_ID 
+		AND B.MEM_ID = #{memId} 
+		
+		<if test="gameName != null and gameName != ''">
+			and a.game_name like '%' || #{gameName} || '%'
+		</if>
+		
+		order by b.rev_date DESC
+		</select>
+	
+	
+	
+	<delete id="deleteReview" parameterType="String">
+	delete from review where rev_id = #{revId}
+	</delete>
+	
+	
+	<delete id="adminReviewDelete" parameterType="String">
+	delete from review where rev_id = #{revId}
+	</delete>
+	
+	<delete id="delete" parameterType="MyReviewVO">
+	delete from review where mem_id = #{memId} and rev_id = #{revId}
+	</delete>
+
+	<select id="getMemberReview" parameterType="String" resultMap="myRevMap">
+		SELECT B.REV_ID, A.GAME_ID, B.MEM_ID, A.GAME_NAME, A.GAME_IMG, 
+		b.REV_TITLE, B.REV_CONT, B.REV_DATE, B.REV_GRADE 
+		FROM GAME A, REVIEW B 
+		WHERE A.GAME_ID = B.GAME_ID 
+		AND B.MEM_ID = #{memId} 
+		order by b.rev_date DESC
+	</select>
+	
+<!-- 관리자 리뷰페이지 -->
+	<select id="getAdminReview" resultType="MyReviewVO">
+		select b.rev_id, a.game_id, c.mem_id, c.mem_name, a.game_img, a.game_name, b.rev_title, b.rev_cont, b.rev_date, b.rev_grade
+		from game a, review b, member c
+		where a.game_id = b.game_id
+		and b.mem_id = c.mem_id
+		order by b.rev_date DESC
+	</select>
+
+		
+<!-- 	<select id="getReview" parameterType="String" resultType="ReviewVO"> -->
+<!-- 		select a.mem_id, b.rev_id, b.rev_title, b.rev_date, b.rev_grade, b.rev_cont, e.game_id  -->
+<!-- 		from member a, review b, (select c.game_id, d.rev_id  -->
+<!-- 			                      from game c, review d  -->
+<!-- 			                      where c.game_id = d.game_id) e -->
+<!-- 		where a.mem_id = b.mem_id  -->
+<!-- 		and b.rev_id = e.rev_id  -->
+<!-- 		and b.rev_id = #{revId} -->
+<!-- 	</select> -->
+	
+	<select id="getReview" parameterType="String" resultType="MyReviewVO">
+		
+			select b.rev_id, e.game_id, a.mem_id, b.rev_title, b.rev_cont, b.rev_date, b.rev_grade , e.game_name, e.game_img
+			from member a, review b,(select c.game_id, d.rev_id, c.game_name , c.game_img 
+						                      from game c, review d 
+						                      where c.game_id = d.game_id) e 
+			where a.mem_id = b.mem_id 
+			and b.rev_id = e.rev_id 
+			and b.rev_id = #{revId}  
+	</select>
+	
+	
+	
+		
+	<select id="getReviewList" parameterType="String" resultType="MyReviewVO">
+		SELECT B.REV_ID, A.GAME_ID, A.GAME_NAME, A.GAME_IMG, B.MEM_ID,
+		B.REV_TITLE, B.REV_CONT, B.REV_DATE, B.REV_GRADE
+		FROM GAME A, REVIEW B
+		WHERE A.GAME_ID = B.GAME_ID
+	</select>
+	
+	<select id="getReviewDetailList" parameterType="String" resultType="MyReviewVO">
+		SELECT B.REV_ID, A.GAME_ID, A.GAME_NAME, A.GAME_IMG, B.mem_id, 
+		B.REV_TITLE, B.REV_CONT, B.REV_DATE, B.REV_GRADE 
+		FROM GAME A, REVIEW B, MEMBER C 
+		WHERE A.GAME_ID = B.GAME_ID 
+		and B.mem_id = c.mem_id 
+		and a.game_id = #{gameId} 
+		order by b.rev_date desc 
+	</select>
+	
+	
+<!--회원 리뷰페이지 페이징 넘버 처리 -->
+	<select id="countReviewList" resultType="int">
+		SELECT count(*)
+		FROM GAME A, REVIEW B 
+		WHERE A.GAME_ID = B.GAME_ID 
+		AND B.MEM_ID = #{memId} 
+		</select>
+		
+	<select id="searchCountReviewList" parameterType="MyReviewVO" resultType="int">
+		SELECT count(*)
+		FROM GAME A, REVIEW B 
+		WHERE A.GAME_ID = B.GAME_ID 
+		AND B.MEM_ID = #{memId} 
+		<if test="gameName != null and gameName != ''">
+			and a.game_name like '%' || #{gameName} || '%' 
+		</if>
+		</select>
+
+	<select id="reviewList" parameterType="hashMap" resultType="MyReviewVO">
+	select A.* from(
+	select ROWNUM AS RNUM, B.* from(
+	select B.REV_ID, A.GAME_ID, B.MEM_ID, A.GAME_NAME, A.GAME_IMG,
+	b.REV_TITLE, B.REV_CONT, B.REV_DATE, B.REV_GRADE
+	from GAME A, REVIEW B
+	WHERE A.GAME_ID = B.GAME_ID
+	AND B.MEM_ID = #{memId} 
+	<if test="gameName != null and gameName != ''">
+			and a.game_name like '%' || #{gameName} || '%' 
+		</if>
+		order by B.rev_date DESC )B 
+			
+      <![CDATA[
+      where ROWNUM <= #{end} 
+   )A
+   where A.rnum >= #{start} 
+		]]>
+	</select>
+	
+<!-- 관리자 리뷰페이지 페이징 넘버 처리 -->
+	<select id="countAdReviewList" resultType="int">
+		select count(*)
+		from game g, review r, member m
+		where g.game_id = r.game_id
+		and r.mem_id = m.mem_id
+		</select>
+
+	<select id="searchCountAdReviewList" parameterType="MyReviewVO" resultType="int">
+		select count(*)
+		from game g, review r, member m
+		where g.game_id = r.game_id
+		and r.mem_id = m.mem_id
+		<if test="memName != null and memName != ''">
+			and m.mem_name like '%' || #{memName} || '%'
+		</if>
+	</select>
+
+	<select id="adReviewList" resultType="MyReviewVO">
+	select A.* from(
+	select ROWNUM AS RNUM, B.* from(
+	select r.rev_id, g.game_id, m.mem_id, m.mem_name, g.game_img, g.game_name, r.rev_title, r.rev_cont, r.rev_date, r.rev_grade
+		from game g, review r, member m
+		where g.game_id = r.game_id
+		and r.mem_id = m.mem_id
+	
+		<if test="gameName != null and gameName != ''">
+			and g.game_name like '%' || #{gameName} || '%'
+		</if>
+		<if test="memName != null and memName != ''">
+			and m.mem_name like '%' || #{memName} || '%'
+		</if>
+		order by r.rev_date DESC
+	)B
+      <![CDATA[
+      where ROWNUM <= #{end}
+   )A
+   where A.rnum >= #{start}
+		]]>
+		
+	</select>
+	
+</mapper>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member">
+
+	<resultMap type="MemberVO" id="memMap">
+		<result column="mem_id" property="memId" />
+		<result column="mem_pw" property="memPw" />
+		<result column="mem_name" property="memName" />
+		<result column="mem_ph" property="memPh" />
+		<result column="mem_mail" property="memMail" />
+		<result column="mem_birth" property="memBirth" />
+		<result column="mem_quit" property="memQuit" />
+		<result column="mem_auth" property="memAuth" />
+
+	</resultMap>
+
+	<insert id="insertMember" parameterType="MemberVO">
+		INSERT INTO MEMBER
+		(mem_id, mem_pw, mem_name, mem_ph, mem_mail, mem_birth)
+		VALUES
+		(#{memId}, #{memPw}, #{memName}, #{memPh}, #{memMail}, #{memBirth})
+	</insert>
+
+	<select id="checkMemId" parameterType="String" resultType="String">
+		SELECT mem_id FROM MEMBER WHERE mem_id = #{memId}
+	</select>
+
+	<select id="checkMemPw" resultType="String">
+		SELECT
+		mem_pw FROM MEMBER
+		WHERE mem_pw = #{mem_pw}
+		AND mem_id = #{memId}
+	</select>
+
+	<update id="updateMember" parameterType="MemberVO">
+		UPDATE MEMBER
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="memPw != null and memPw !=''">mem_Pw = #{memPw},</if>
+			mem_name = #{memName}, mem_ph = #{memPh}, mem_mail = #{memMail}, mem_birth = #{memBirth}
+		</trim>
+		WHERE mem_id = #{memId}
+	</update>
+	
+	<update id="updatePw" parameterType="MemberVO">
+		update member set mem_pw = #{memPw}
+		where mem_id = #{memId}
+		and mem_name = #{memName}
+	</update>
+
+
+
+	<select id="searchId" parameterType="MemberVO" resultType="String">
+		SELECT mem_id FROM MEMBER 
+		WHERE mem_name = #{memName} 
+		AND mem_ph = #{memPh} 
+	</select>
+
+	<select id="searchPw" parameterType="MemberVO" resultType="String">
+		SELECT mem_pw FROM MEMBER 
+		WHERE mem_id = #{memId} 
+		AND mem_ph = #{memPh} 
+		AND mem_mail = #{memMail} 
+	</select>
+
+	<select id="getAllMember" resultType="MemberVO">
+		SELECT * FROM MEMBER
+
+	</select>
+
+	<select id="getAllMemberId" resultType="String">
+		select mem_id from MEMBER
+	</select>
+
+	<select id="getMember" parameterType="String" resultMap="memMap" resultType="MemberVO">
+		select * from MEMBER
+		where mem_id = #{memId}
+	</select>
+
+	<update id="quitMember" parameterType="MemberVO">
+		UPDATE MEMBER SET mem_quit = #{memQuit}
+		WHERE mem_id = #{memId}
+	</update>
+
+	<select id="authMember" parameterType="String" resultType="String">
+		UPDATE MEMBER SET mem_auth = 'o'
+		WHERE mem_id = #{memId}
+	</select>
+
+	<select id="loginMember" parameterType="MemberVO" resultType="MemberVO">
+		SELECT * FROM MEMBER
+		WHERE mem_id = #{memId}
+		AND mem_pw = #{memPw}
+		AND mem_quit = 'x'
+	</select>
+
+	<select id="countList" resultType="int">
+		SELECT COUNT(*) FROM Member
+	</select>
+
+	<select id="memList" resultType="MemberVO">
+		select A.* from(
+		select ROWNUM AS RNUM, B.* from(
+		select *
+		from member
+		)B
+			<![CDATA[
+			where ROWNUM <= #{end}
+		)A
+		where A.rnum >= #{start}
+		]]>
+	</select>
+
+	<select id="searchGameCode" parameterType="String" resultType="String">
+		SELECT game_id FROM game_code where game_code = #{gameCode}
+	</select>
+	
+	<select id="searchCodeUse" parameterType="String" resultType="String">
+		SELECT code_use FROM game_code where game_code = #{gameCode}
+	</select>
+
+
+
+</mapper>

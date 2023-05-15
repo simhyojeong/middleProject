@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="discount">
+
+	<select id="allDiscountList" resultType="gameVO">
+		select a.game_id, a.game_name, a.game_price, a.game_date, a.game_dev, a.game_img, a.game_video, a.age_grade, b.dis_end 
+		from game a, discount b 
+		where a.game_id = b.game_id
+	</select>
+
+	<select id="getDiscountList" parameterType="gameSearchVO" resultType="gameVO">
+		select a.game_id, a.game_name, a.game_price, a.game_img 
+		from game a, game_detail b, category_detail c, discount d 
+		where a.game_id = b.game_id 
+		and b.detail_id = c.detail_id 
+		and a.game_id = d.game_id 
+
+		<if test="detailId1 != null and detailId1 != ''">
+			and b.detail_id = #{detailId1} 
+		</if>
+		<if test="detailId2 != null and detailId2 != ''">
+			and a.game_id IN ( 
+			select a.game_id 
+			from game a, game_detail b, category_detail c, discount d 
+			where a.game_id = b.game_id 
+			and b.detail_id = c.detail_id 
+			and a.game_id = d.game_id 
+			and b.detail_id = #{detailId2}) 
+		</if>
+		<if test="detailId3 != null and detailId3 != ''">
+			and a.game_id IN (select a.game_id 
+			from game a, game_detail b, category_detail c, discount d 
+			where a.game_id = b.game_id 
+			and b.detail_id = c.detail_id 
+			and a.game_id = d.game_id 
+			and b.detail_id = #{detailId3}) 
+		</if>
+		<if test="detailName1 != null and detailName1 != ''">
+			and c.detail_name like '%' || #{detailName1} || '%' 
+		</if>
+		<if test="detailName2 != null and detailName2 != ''">
+			and c.detail_name like '%' || #{detailName2} || '%' 
+		</if>
+		<if test="detailName3 != null and detailName3 != ''">
+			and c.detail_name like '%' || #{detailName3} || '%' 
+		</if>
+		<if test="gamePrice != null and gamePrice != ''">
+			and a.game_price &lt;= #{gamePrice} 
+		</if>
+		order by 1
+	</select>
+
+	<select id="getDiscountInfo" parameterType="String" resultType="gameVO">
+		select a.game_id, a.game_name, a.game_price, a.game_img 
+		from game a, discount b 
+		where a.game_id = b.game_id 
+		and lower(a.game_name) like '%' || lower(#{gameName}) || '%' 
+	</select>
+
+	<select id="getDetailDiscountInfo" parameterType="String" resultType="gameDetailVO">
+		select a.game_id, a.game_name, a.game_price, a.game_date, 
+		a.age_grade, a.game_video, c.detail_name, d.cate_name, f.pub_name 
+		from game a, game_detail b, category_detail c, category d, publish e, publisher f 
+		where a.game_id = b.game_id and b.detail_id = c.detail_id 
+		and c.cate_id = d.cate_id 
+		and a.game_id = e.game_id 
+		and e.pub_id = f.pub_id 
+		and a.game_id = #{gameId} 
+	</select>
+</mapper>

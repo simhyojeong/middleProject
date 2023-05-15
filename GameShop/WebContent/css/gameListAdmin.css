@@ -1,0 +1,1282 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap');
+
+
+html {
+	padding: 0;
+	margin: 0;
+}
+
+/* .account-management, body, html {
+	background: #f8f8f8;
+} */
+html, body {
+	margin: 0px;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+laebl {
+	color: #ddd;
+}
+div >label {
+	color: #ddd;
+}
+
+
+::-webkit-calendar-picker-indicator{
+        margin-left: -15px;
+    }
+
+
+/* .header { */
+/*     background-color: #f1f1f1; */
+/*     padding: 30px; */
+/*     text-align: center; */
+/*     font-size: 35px; */
+/* } */
+
+.column {
+    float: left;
+    padding: 10px;
+    min-height: 100vh;
+}
+
+.column.side {
+    width: 20%;
+    background-color: #121212;
+}
+
+.column.middle {
+    width: 60%;
+    background-color: #121212;
+}
+
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* body전체 광역 적용이라 id값으로 변경 (원래body였음) */
+#gameListAdmin-Body {
+	color: #141414;
+	margin: 0;
+	font-size: 0.875rem;
+	font-family: Brutal, sans-serif;
+	font-weight: 400;
+	line-height: 1.43;
+	letter-spacing: 0.01em;
+}
+
+/* .col-md-9.col-lg-9.col-sm-9.main-section { */
+/* 	background-color: #121212; */
+/* } */
+
+input {
+	writing-mode: horizontal-tb !important;
+	text-rendering: auto;
+/* 	color: -internal-light-dark(black, white); */
+	color: white;
+	word-spacing: normal;
+	line-height: normal;
+	text-transform: none;
+	text-indent: 0px;
+	text-shadow: none;
+	display: inline-block;
+	text-align: start;
+	appearance: auto;
+	-webkit-rtl-ordering: logical;
+	cursor: text;
+	/* ? */
+	background-color: -internal-light-dark(rgb(255, 255, 255),
+		rgb(59, 59, 59));
+	margin: 0em;
+	padding: 1px 2px;
+	border-width: 2px;
+	border-style: inset;
+	border-color: -internal-light-dark(rgb(118, 118, 118),
+		rgb(133, 133, 133));
+	border-image: initial;
+}
+
+input:focus {
+	  outline: 0.5px solid #202020;
+}
+
+input::placeholder {
+  color: #DDDDDD; 
+  font-size: 16px;
+}
+
+input >.input.confirmPassword {
+	outline: none;
+}
+
+button {
+	appearance: auto;
+	writing-mode: horizontal-tb !important;
+	text-rendering: auto;
+	color: buttontext;
+	letter-spacing: normal;
+	word-spacing: normal;
+	line-height: normal;
+	text-transform: none;
+	text-indent: 0px;
+	text-shadow: none;
+	display: inline-block;
+	text-align: center;
+	align-items: flex-start;
+	cursor: default;
+	box-sizing: border-box;
+	background-color: -internal-light-dark(rgb(239, 239, 239),
+		rgb(59, 59, 59));
+	margin: 0em;
+	padding: 1px 6px;
+	border-width: 2px;
+	border-style: outset;
+	border-color: buttonborder;
+	border-image: initial;
+	cursor: pointer;
+}
+
+
+
+.icon-user:before {
+	content: "\E90D";
+}
+
+.sidebar-section .navigation-section .setting .custom-chevron {
+	margin-top: 5px;
+	font-size: 15px;
+}
+
+.account-management .visible-lg, .account-management .visible-lg-block,
+	.account-management .visible-lg-inline, .account-management .visible-lg-inline-block,
+	.account-management .visible-md, .account-management .visible-md-block,
+	.account-management .visible-md-inline, .account-management .visible-md-inline-block,
+	.account-management .visible-sm, .account-management .visible-sm-block,
+	.account-management .visible-sm-inline, .account-management .visible-sm-inline-block,
+	.account-management .visible-xs, .account-management .visible-xs-block,
+	.account-management .visible-xs-inline, .account-management .visible-xs-inline-block
+	{
+	display: none !important;
+}
+
+.account-management .pull-right {
+	float: right !important;
+}
+
+i {
+	font-style: italic;
+}
+
+.account-management .container:after, .account-management .container:before
+	{
+	display: table;
+	content: " ";
+}
+
+*, *::before, *::after {
+	box-sizing: inherit;
+}
+
+.account-management .account-management-content, .body-regular,
+	.brutal-type--regular, .caption, .caption-regular, .heading4-regular,
+	.heading5-regular, .heading6-regular, .lead {
+	font-family: BrutalType;
+}
+
+.account-management .main-section {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.account-management .col-lg-9 {
+	width: 75%;
+}
+
+.gamecodemiddle {
+	max-width : 100%;
+	width : 100%;
+}
+
+.account-management .col-lg-1, .account-management .col-lg-2,
+	.account-management .col-lg-3, .account-management .col-lg-4,
+	.account-management .col-lg-5, .account-management .col-lg-6,
+	.account-management .col-lg-7, .account-management .col-lg-8,
+	.account-management .col-lg-9, .account-management .col-lg-10,
+	.account-management .col-lg-11, .account-management .col-lg-12 {
+	float: left;
+}
+
+.account-management .col-lg-1, .account-management .col-lg-2,
+	.account-management .col-lg-3, .account-management .col-lg-4,
+	.account-management .col-lg-5, .account-management .col-lg-6,
+	.account-management .col-lg-7, .account-management .col-lg-8,
+	.account-management .col-lg-9, .account-management .col-lg-10,
+	.account-management .col-lg-11, .account-management .col-lg-12,
+	.account-management .col-md-1, .account-management .col-md-2,
+	.account-management .col-md-3, .account-management .col-md-4,
+	.account-management .col-md-5, .account-management .col-md-6,
+	.account-management .col-md-7, .account-management .col-md-8,
+	.account-management .col-md-9, .account-management .col-md-10,
+	.account-management .col-md-11, .account-management .col-md-12,
+	.account-management .col-sm-1, .account-management .col-sm-2,
+	.account-management .col-sm-3, .account-management .col-sm-4,
+	.account-management .col-sm-5, .account-management .col-sm-6,
+	.account-management .col-sm-7, .account-management .col-sm-8,
+	.account-management .col-sm-9, .account-management .col-sm-10,
+	.account-management .col-sm-11, .account-management .col-sm-12,
+	.account-management .col-xs-1, .account-management .col-xs-2,
+	.account-management .col-xs-3, .account-management .col-xs-4,
+	.account-management .col-xs-5, .account-management .col-xs-6,
+	.account-management .col-xs-7, .account-management .col-xs-8,
+	.account-management .col-xs-9, .account-management .col-xs-10,
+	.account-management .col-xs-11, .account-management .col-xs-12 {
+	position: relative;
+	min-height: 1px;
+	padding-right: 15px;
+	padding-left: 15px;
+}
+
+.account-management .account-management-content {
+	padding: 50px 0;
+	min-height: 100vh;
+}
+
+.account-management .container {
+	width: 1170px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 20px;
+}
+
+.account-management .account-management-content .row {
+	margin: 0;
+}
+
+div {
+	display: block;
+}
+
+* {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-user-drag: none;
+	-webkit-tap-highlight-color: transparent;
+}
+
+.account-management .col-lg-3 {
+	width: 25%;
+}
+
+.sidebar-section .container.sidebar-container {
+	background: #121212;
+	padding: 0;
+	width: auto;
+}
+
+.account-management .container {
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.general-settings-ref .general-settings-container .content-section,
+	.general-settings-ref .general-settings-container .title-section {
+	padding: 0;
+}
+
+.sidebar-section .navigation-section {
+	border-right: 1px solid #ebebeb;
+	border-left: 1px solid #ebebeb;
+}
+
+.sidebar-section .navigation-section .setting:last-child {
+	border-bottom: 1px solid #ebebeb;
+}
+
+
+
+.container.account-management-content {
+	margin-top: 50px;
+}
+
+.account-deletion-container .title-section {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.account-management .col-md-12 {
+	width: 100%;
+}
+
+.sidebar-section .navigation-section .setting:first-child {
+	border-left: 1px solid #ebebeb;
+}
+
+.sidebar-section .navigation-section .setting {
+	background: transparent;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	-webkit-transition: border-left-width .25s ease-in-out, color .25s
+		ease-in-out;
+	-o-transition: border-left-width .25s ease-in-out, color .25s
+		ease-in-out;
+	transition: border-left-width .25s ease-in-out, color .25s ease-in-out;
+	border: 1px solid #ebebeb;
+	border-bottom: none;
+	border-radius: 0;
+	text-align: left;
+	text-transform: uppercase;
+	color: #999;
+	padding: 15px;
+	display: block;
+	font-size: .735em;
+	width: 500px;
+}
+
+.account-management .col-md-12 {
+	width: 100%;
+}
+
+.account-management .col-lg-1, .account-management .col-lg-2,
+	.account-management .col-lg-3, .account-management .col-lg-4,
+	.account-management .col-lg-5, .account-management .col-lg-6,
+	.account-management .col-lg-7, .account-management .col-lg-8,
+	.account-management .col-lg-9, .account-management .col-lg-10,
+	.account-management .col-lg-11, .account-management .col-lg-12,
+	.account-management .col-md-1, .account-management .col-md-2,
+	.account-management .col-md-3, .account-management .col-md-4,
+	.account-management .col-md-5, .account-management .col-md-6,
+	.account-management .col-md-7, .account-management .col-md-8,
+	.account-management .col-md-9, .account-management .col-md-10,
+	.account-management .col-md-11, .account-management .col-md-12,
+	.account-management .col-sm-1, .account-management .col-sm-2,
+	.account-management .col-sm-3, .account-management .col-sm-4,
+	.account-management .col-sm-5, .account-management .col-sm-6,
+	.account-management .col-sm-7, .account-management .col-sm-8,
+	.account-management .col-sm-9, .account-management .col-sm-10,
+	.account-management .col-sm-11, .account-management .col-sm-12,
+	.account-management .col-xs-1, .account-management .col-xs-2,
+	.account-management .col-xs-3, .account-management .col-xs-4,
+	.account-management .col-xs-5, .account-management .col-xs-6,
+	.account-management .col-xs-7, .account-management .col-xs-8,
+	.account-management .col-xs-9, .account-management .col-xs-10,
+	.account-management .col-xs-11, .account-management .col-xs-12 {
+	position: relative;
+	min-height: 1px;
+	padding-right: 15px;
+	padding-left: 15px;
+}
+
+.sidebar-section .navigation-section .setting .glyphicon-custom {
+	font-size: 20px;
+	margin-right: 10px;
+	vertical-align: middle;
+	position: relative;
+	top: 0;
+}
+
+[class*=" icon-"], [class^=icon-] {
+	font-family: icomoon !important;
+	speak: none;
+	font-style: normal;
+	font-weight: 400;
+	-webkit-font-feature-settings: normal;
+	font-feature-settings: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.account-management .col-lg-9 {
+	width: 75%;
+}
+
+.account-management .main-section {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.account-management .main-section .main-container {
+	border: 1px solid #ebebeb;
+	border-radius: 3px;
+	padding: 35px 30px;
+	background: #fff;
+}
+
+form {
+	display: block;
+	margin-top: 0em;
+}
+
+.account-management .account-management-content .row {
+	margin: 0;
+}
+
+.account-management .col-md-12 {
+	width: 100%;
+}
+
+.account-management .main-section .form-container {
+	width: 100%;
+}
+
+p {
+	display: block;
+	margin-block-start: 1em;
+	margin-block-end: 1em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+}
+
+.title-section .title {
+	font-size: 24px;
+	font-family: BrutalTypeMedium;
+	text-transform: uppercase;
+}
+
+.title-section .description {
+	color: #999;
+	line-height: 1.4285;
+	padding-top: 10px;
+}
+
+.caption-regular, .title-section .description {
+	font-size: 14px;
+}
+
+.account-management p {
+	margin: 0 0 10px;
+}
+
+.title-section .description .icon-private-info.lock-icon {
+	padding-left: 5px;
+}
+
+.form-container .form--body .form--body-column {
+	width: 100%;
+	padding: 0;
+}
+
+.account-management p {
+	margin: 0 0 10px;
+}
+
+.title-section .description {
+	color: #999;
+	line-height: 1.4285;
+	padding-top: 10px;
+}
+
+.caption-regular, .title-section .description {
+	font-size: 14px;
+}
+
+.password-inner-container {
+	margin: 40px auto;
+}
+
+.account-info-fields {
+	padding-top: 1.25em;
+}
+
+.password-inner-container .password-fields {
+	padding-left: 0;
+	padding-right: 25px;
+/* 	border-right: 1px solid #ebebeb; */
+}
+
+.account-management .col-md-6 {
+	width: 100%;
+}
+
+.form-container .form--body .form--body-column .form-field--section {
+	margin: 20px auto;
+}
+
+.form-container .form--body .form--body-column .form-field--section .form-group
+	{
+	margin: 15px auto;
+}
+
+.form-title-section .title {
+	font-size: 14px;
+}
+
+span.error {
+	color: #dc5353;
+}
+
+.form-title-section .field-requirement, .form-title-section .title {
+	margin: 0;
+	text-transform: uppercase;
+}
+
+.account-deletion-container .button-section {
+	padding-right: 0;
+}
+
+.form-title-section .field-requirement, .form-title-section .title {
+	margin: 0;
+	text-transform: uppercase;
+}
+
+.form-title-section .field-requirement {
+	color: #a1a1a1;
+	font-size: .75em;
+	padding-top: 5px;
+}
+
+.account-management .col-md-4 {
+	width: 33.33333%;
+}
+
+.account-deletion-container .btn-container {
+	margin: 1em auto;
+}
+
+.common-input-btn-style .input-with-button-container .button-container .input-button .icon.icon-pencil
+	{
+	font-size: .9em;
+	position: relative;
+	top: 1px;
+}
+
+.account-management .btn {
+	display: inline-block;
+	margin-bottom: 0;
+	font-weight: 400;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	cursor: pointer;
+	background-image: none;
+	border: 1px solid transparent;
+	padding: 6px 12px;
+	font-size: 14px;
+	line-height: 1.42857;
+	border-radius: 4px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.account-deletion-container .button-section .btn-container .btn.btn-custom
+	{
+	position: relative;
+	top: 3px;
+	width: 250px;
+	-o-text-overflow: ellipsis;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.btn-container .btn-submit-custom {
+	background: #0074e4;
+	color: #fff;
+}
+
+.btn-container .btn-custom {
+	text-transform: uppercase;
+	color: #fff;
+	font-size: 14px;
+	line-height: 1.42857;
+	padding: 1em 2em;
+	display: inline-block;
+	border-radius: 3px;
+	border: 0;
+	-webkit-transition: background-color .3s ease-in-out;
+	-o-transition: background-color .3s ease-in-out;
+	transition: background-color .3s ease-in-out;
+}
+
+.form-container .form--body .form--body-column .form-field--section {
+	margin: 20px auto;
+}
+
+.title-section.sub-title .title {
+	font-size: 24px;
+	font-family: BrutalTypeMedium;
+	text-transform: uppercase;
+}
+
+.account-info-fields .account-id-section {
+	padding: 1em 0 0.5em;
+	margin-top: -50px;
+}
+
+.account-management .col-md-12 {
+	width: 100%;
+}
+
+.paragraph-container .paragraph.p-body, .paragraph-container .paragraph.p-body.gray
+	{
+	font-size: 18px;
+}
+
+.account-info-fields .account-id-section .account-id-label {
+	text-transform: uppercase;
+	padding-right: 0.5em;
+}
+
+.bold {
+	font-weight: 700;
+}
+
+.account-deletion-container .description-section {
+	padding-left: 0;
+	position: relative;
+}
+
+.form-container .form--body .form-field--custom.password-field .input {
+	margin: 10px auto 0px;
+}
+
+
+
+.account-management .col-md-8 {
+	width: 66.66667%;
+}
+
+.form-field--custom .control-label {
+	font-weight: 100;
+	font-size: .725em;
+	position: absolute;
+	pointer-events: none;
+	left: 15.5px;
+	top: 32px;
+	-webkit-transition: all .18s ease;
+	-o-transition: .18s ease all;
+	transition: all .18s ease;
+	color: #aeaeae;
+}
+
+.form-field--custom .input-message {
+	opacity: 0;
+	visibility: hidden;
+	position: absolute;
+	top: 70px;
+	left: 0;
+	text-transform: uppercase;
+	font-size: .6em;
+}
+
+.form-container .form--body .form-field--custom.password-field {
+	display: block;
+	position: relative;
+}
+
+.form-container .form--body .form-field--custom {
+	padding: 0 15px 0 0;
+	display: inline-block;
+}
+
+.form-field--custom .input {
+	font-size: 18px;
+}
+
+.form-container .form--body .form-field--custom.password-field .input-message
+	{
+	position: absolute;
+	top: 70px;
+}
+
+.form-field--custom .input {
+	width: 100%;
+	height: 45px;
+/* 	padding: 12px 0 0 14px; */
+	padding-left:12px;
+	margin-bottom: 15px;
+	border-radius: 2px;
+	margin-top: 20px;
+	background: #121212;
+/* 	color: #555; */
+	border: none;
+}
+
+.form-field--custom .input-message {
+	opacity: 0;
+	visibility: hidden;
+	position: absolute;
+	top: 75px;
+	left: 0;
+	text-transform: uppercase;
+	font-size: .6em;
+}
+
+.password-inner-container .password-information-section {
+	margin: 40px auto;
+	padding: 0 25px;
+}
+
+.display-name-field.common-input-btn-style, .email-change-field.common-input-btn-style
+	{
+	padding-left: 0;
+}
+
+.account-management .account-management-content .row {
+	margin: 0;
+}
+
+.common-input-btn-style .input-with-button-container .input-container {
+	padding-left: 0;
+	padding-right: 0;
+	height: 85px;
+}
+
+.input-container .input {
+	width: 100%;
+	height: 45px;
+	padding: 0 0 0 14px;
+	margin-bottom: 15px;
+	border-radius: 2px;
+	margin-top: 20px;
+	background: transparent;
+	color: #555;
+	border: 1px solid #7c7c7c;
+	font-size: 16px;
+}
+
+.MuiDialogContent-root {
+	flex: 1 1 auto;
+	height: 100%;
+	padding: 45px 60px 20px;
+	overflow-x: hidden;
+	overflow-y: auto;
+	padding-top: 50px;
+	padding-left: 55px;
+	padding-right: 55px;
+	padding-bottom: 60px;
+	-webkit-overflow-scrolling: touch;
+}
+
+.input-container .control-label {
+	font-weight: 100;
+	font-size: .8em;
+	position: relative;
+	display: inline-block;
+	pointer-events: none;
+	left: 15px;
+	top: -54px;
+	-webkit-transition: all .18s ease;
+	-o-transition: .18s ease all;
+	transition: all .18s ease;
+	color: #aeaeae;
+}
+
+.common-input-btn-style .input-with-button-container .common-form-container.input-container.filled .control-label
+	{
+	top: -62px;
+}
+
+.input-container.filled .control-label {
+	bottom: 10px;
+	left: 15px;
+	font-size: .55em;
+	opacity: 1;
+}
+
+.input-container .control-label {
+	font-weight: 100;
+	position: relative;
+	display: inline-block;
+	pointer-events: none;
+	left: 15px;
+	top: -54px;
+	-webkit-transition: all .18s ease;
+	-o-transition: .18s ease all;
+	transition: all .18s ease;
+	color: #aeaeae;
+}
+
+.common-input-btn-style .input-with-button-container .input-container {
+	padding-left: 0;
+	padding-right: 0;
+	height: 85px;
+}
+
+.account-management .col-md-10 {
+	width: 83.33333%;
+}
+
+.password-inner-container .password-information-section .title-section .title
+	{
+	font-size: 14px;
+	text-transform: uppercase;
+}
+
+.account-management p {
+	margin: 0 0 10px;
+}
+
+.password-inner-container .password-information-section .description-section
+	{
+	margin-top: 45px;
+}
+
+.password-inner-container .password-information-section .description-section .description
+	{
+	color: #999;
+	margin: 35px auto;
+}
+
+input-container .input[disabled] {
+	cursor: not-allowed;
+	background-color: #eee;
+	opacity: 1;
+	color: #999;
+}
+
+.input-container .input {
+	width: 100%;
+	height: 45px;
+	padding: 0 0 0 14px;
+	margin-bottom: 15px;
+	border-radius: 2px;
+	margin-top: 20px;
+	background: transparent;
+	color: #555;
+	border: 1px solid #7c7c7c;
+	font-size: 16px;
+}
+
+.common-input-btn-style .input-with-button-container .common-form-container.input-container.filled .control-label
+	{
+	top: -62px;
+}
+
+.input-container.filled .control-label {
+	top: -68px;
+	bottom: 10px;
+	left: 15px;
+	font-size: .55em;
+	opacity: 1;
+}
+
+.caption-regular, .password-inner-container .password-information-section .description-section .description
+	{
+	font-size: 14px;
+}
+
+.body-regular, .brutal-type--regular, .caption, .caption-regular,
+	.heading4-regular, .heading5-regular, .heading6-regular, .lead,
+	.password-inner-container .password-information-section .description-section .description
+	{
+	font-family: BrutalType;
+}
+
+.password-inner-container:after {
+	clear: both;
+}
+
+.container.form-container.password-form-container .submit-section {
+	padding: 0;
+}
+
+.form-container .form--body .form--body-column .submit-section {
+	text-align: left;
+}
+
+.account-management .col-md-12 {
+	width: 100%;
+}
+
+.submit-btns.mobile-btn-section .btn-default, .submit-section .submit-btns .btn-default
+	{
+	outline-color: #141414;
+	background: #e6e6e6;
+	color: #141414;
+	border: 0;
+	margin-right: 20px;
+	-webkit-transition: background-color .3s ease-in-out;
+	-o-transition: background-color .3s ease-in-out;
+	transition: background-color .3s ease-in-out;
+}
+
+.submit-btns.mobile-btn-section .btn-custom, .submit-section .submit-btns .btn-custom
+	{
+	text-transform: uppercase;
+	font-size: 14px;
+	line-height: 1.42857;
+	border-radius: 2px;
+	padding: 1em 2em;
+	display: inline-block;
+	border-radius: 3px;
+}
+
+.account-management .btn {
+	display: inline-block;
+	margin-bottom: 0;
+	font-weight: 400;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	cursor: pointer;
+	background-image: none;
+	border: 1px solid transparent;
+	padding: 6px 12px;
+	font-size: 14px;
+	line-height: 1.42857;
+	border-radius: 4px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.container form-container password-form-container {
+	width: 100%;
+}
+
+.submit-btns.mobile-btn-section .btn-submit, .submit-section .submit-btns .btn-submit
+	{
+	background: #0074e4;
+	margin-right: 20px;
+	-webkit-transition: background-color .3s ease-in-out;
+	-o-transition: background-color .3s ease-in-out;
+	transition: background-color .3s ease-in-out;
+	color: #fff;
+	border: none;
+}
+
+.container, .container-fluid, .container-lg, .container-md,
+	.container-sm, .container-xl, .container-xxl { 
+	--bs-gutter-x: 1.5rem; 
+	--bs-gutter-y: 0;
+}
+
+.sidebar-section .navigation-section .setting.active, .sidebar-section .navigation-section .setting:hover
+	{
+	color: white;
+	-webkit-transition: border-left-width .15s ease-in-out, color .15s
+		ease-in-out;
+	-o-transition: border-left-width .15s ease-in-out, color .15s
+		ease-in-out;
+	transition: border-left-width .15s ease-in-out, color .15s ease-in-out;
+	border-left: 5px solid #d32f2f;
+}
+
+.sidebar-section .navigation-section .setting {
+	background: transparent;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	-webkit-transition: border-left-width .25s ease-in-out, color .25s
+		ease-in-out;
+	-o-transition: border-left-width .25s ease-in-out, color .25s
+		ease-in-out;
+	transition: border-left-width .25s ease-in-out, color .25s ease-in-out;
+	border: 0.5px solid #ebebeb;
+	border-bottom: none;
+	border-radius: 0;
+	text-align: left;
+	text-transform: uppercase;
+	color: #999;
+	padding: 15px;
+	display: block;
+	font-size: .735em;
+	width:500px;
+}
+
+#left {
+	float: left;
+}
+
+#right {
+	float: right;
+}
+
+.account-management .load-root-container {
+	background: #fff;
+}
+
+.account-management .main-section .main-container.personal-info-container
+	{
+	border-top: 1px solid #ebebeb;
+	border-radius: 0;
+}
+
+.account-management .main-section .main-container {
+	border: 1px solid #ebebeb;
+	border-radius: 0px;
+	padding: 35px 30px;
+	background: #fff;
+}
+
+.input-container .input-message {
+	opacity: 0;
+	visibility: hidden;
+	position: relative;
+	top: -20px;
+	text-transform: uppercase;
+	font-size: .6em;
+}
+
+.common-input-btn-style .input-with-button-container .button-container {
+	text-align: right;
+	padding-right: 0;
+}
+
+.input-with-button-container .button-container {
+	margin-top: 20px;
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.custom-tooltip {
+	position: absolute;
+	top: 30px;
+	right: 62px;
+}
+
+.common-input-btn-style .input-with-button-container .button-container .input-button
+	{
+	cursor: pointer;
+	width: 53px;
+}
+
+.common-input-btn-style .input-with-button-container .button-container .input-button.default
+	{
+	background: #0074e4;
+}
+
+.common-input-btn-style .input-with-button-container .button-container .input-button
+	{
+	cursor: pointer;
+	width: 53px;
+}
+
+.input-with-button-container .button-container .input-button.default {
+	background: #07aff1;
+	color: #fcfeff;
+}
+
+.input-with-button-container .button-container .input-button {
+	height: 45px;
+	border-radius: 4px;
+	border: none;
+}
+
+.common-input-btn-style .input-with-button-container .button-container .input-button .icon.icon-pencil
+	{
+	font-size: .9em;
+	position: relative;
+	top: 1px;
+}
+
+.display-name-field.common-input-btn-style, .email-change-field.common-input-btn-style
+	{
+	padding-left: 0;
+}
+
+.input-with-button-container .button-container .custom-tooltip.input-button
+	{
+	top: 0;
+	right: 0;
+}
+
+.input-with-button-container .button-container .input-button {
+	height: 45px;
+	border-radius: 4px;
+	border: none;
+}
+
+.account-management .col-md-2 {
+	width: 16.66667%;
+}
+
+.common-input-btn-style .input-with-button-container .button-container .input-button.default
+	{
+	background: #0074e4;
+}
+
+.common-input-btn-style .input-with-button-container .button-container .input-button
+	{
+	cursor: pointer;
+	width: 53px;
+}
+
+.input-with-button-container .button-container .input-button.default {
+	background: #07aff1;
+	color: #fcfeff;
+}
+
+.input-with-button-container .button-container .input-button {
+	height: 45px;
+	border-radius: 4px;
+	width: 58px;
+	border: none;
+}
+
+.account-management .main-section .main-container {
+	border: 1px solid #ebebeb;
+	border-radius: 3px;
+	padding: 35px 30px;
+	background: #fff;
+}
+
+.account-management .account-management-content .row {
+	margin: 0;
+}
+
+.form-container {
+	width: 100%;
+}
+
+.name {
+	display: inline-block
+}
+
+.bg-blue {
+	background-color: #121212;
+	border-radius: 8px;
+	color: white;
+}
+
+.fa-check, .fa-minus {
+	color: blue;
+}
+
+.bg-blue:hover {
+	color: #eee;
+	cursor: default;
+}
+
+.bg-blue:hover .fa-check, .bg-blue:hover .fa-minus {
+	background-color: #3e64ff;
+	color: #eee;
+}
+
+.table thead th, .table td {
+	border: none;
+}
+
+
+
+/* .table tbody td:first-child { */
+/* 	border-bottom-left-radius: 10px; */
+/* 	border-top-left-radius: 10px */
+/* } */
+
+/* .table tbody td:last-child { */
+/* 	border-bottom-right-radius: 10px; */
+/* 	border-top-right-radius: 10px */
+/* } */
+
+#spacing-row {
+	height: 10px
+}
+
+thead {
+/* 	font-family: 'Roboto', sans-serif; */
+/* 	font-weight: bolder; */
+	font-size: 16px;
+	color: #666;
+}
+
+.file-container input[type="file"] {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
+}
+
+body {margin: 10px}
+.where {
+  display: block;
+  margin: 25px 15px;
+  font-size: 11px;
+  color: #000;
+  text-decoration: none;
+  font-family: verdana;
+  font-style: italic;
+} 
+
+.filebox input[type="file"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip:rect(0,0,0,0);
+  border: 0;
+}
+
+.filebox label {
+  display: inline-block;
+  padding: .5em .75em;
+  color: #999;
+  font-size: inherit;
+  line-height: normal;
+  vertical-align: middle;
+  background-color: #fdfdfd;
+  cursor: pointer;
+  border: 1px solid #ebebeb;
+  border-bottom-color: #e2e2e2;
+  border-radius: .25em;
+}
+
+
+
+
+.file-container label {
+	display: inline-block;
+	padding: .5em .75em;
+	color: #999;
+	font-size: inherit;
+	line-height: normal;
+	vertical-align: middle;
+	background-color: #fdfdfd;
+	cursor: pointer;
+	border: 1px solid #ebebeb;
+	border-bottom-color: #e2e2e2;
+	border-radius: .25em;
+} /* named upload */
+
+.file-container .upload-name {
+	display: inline-block;
+	padding: .5em .75em; /* label의 패딩값과 일치 */
+	font-size: inherit;
+	font-family: inherit;
+	line-height: normal;
+	vertical-align: middle;
+	background-color: #f5f5f5;
+	border: 1px solid #d32f2f;
+	border-bottom-color: #e2e2e2;
+	border-radius: .25em;
+	-webkit-appearance: none; /* 네이티브 외형 감추기 */
+	-moz-appearance: none;
+	appearance: none;
+}
+
+
+/* 부트스트랩 기본 테두리 스타일 해제 */
+.form-control {  
+     box-shadow: none  !important;
+     outline: none !important;
+}
+
+
+
+
+
+
+

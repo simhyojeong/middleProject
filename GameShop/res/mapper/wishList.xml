@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="wishList">
+
+	<resultMap type="WishListVO" id="WishListMap">
+		<result property="wishId" column="wish_id" />
+		<result property="memId" column="mem_id" />
+		<result property="gameId" column="game_id" />
+	</resultMap>
+
+
+	<insert id="insertWishList" parameterType="WishListVO">
+		insert into wishlist
+		values(( 'wish' || wish_seq.nextval ), #{memId}, #{gameId})
+	</insert>
+
+
+	<delete id="deleteWishList" parameterType="String">
+		delete from wishlist
+		where wish_id = #{wishId}
+	</delete>
+
+
+	<!-- 주문완료된 게임을 제외한 위시리스트 -->
+	<select id="getWishList" parameterType="String"
+		resultType="WishListVO">
+		select wish_id, mem_id, game_id 
+		from wishlist 
+		where mem_id = #{memId} 
+		and game_id not in (
+		select b.game_id 
+		from orders a, cart_game b, wishlist c, cart d 
+		where b.cart_id = a.cart_id 
+		and b.game_id =	c.game_id 
+		and b.cart_id =	d.cart_id 
+		and d.mem_id = #{memId}
+		)
+	</select>
+
+	<!-- 데이터 삽입 전에 DB에 있는지 확인하기 -->
+	<select id="checkExist" parameterType="String"
+		resultType="String">
+		select wish_id 
+		from wishlist 
+		where wish_id = #{wishId}
+	</select>
+
+	<resultMap type="GameVO" id="GameDetail">
+		<result property="gameId" column="game_id" />
+		<result property="gameName" column="game_name" />
+		<result property="gamePrice" column="game_price" />
+		<result property="gameImg" column="game_img" />
+		<result property="ageGrade" column="age_grade" />
+	</resultMap>
+	
+	<select id="gameDetail" parameterType="String"
+		resultMap="GameDetail">
+		select * 
+		from game 
+		where game_id = #{gameId}
+	</select>
+
+	<select id="getMemberWishList" parameterType="String"
+		resultMap="WishListMap">
+		select * from wishlist where mem_id = #{memId}
+	</select>
+
+
+	<select id="getWishId" parameterType="WishListVO"
+		resultType="String">
+		select wish_id 
+		from wishlist 
+		where mem_id = #{memId} 
+		and game_id = #{gameId}
+	</select>
+	
+	<resultMap type="DiscountVO" id="DiscountVO">
+		<result property="disId" column="dis_id" />
+		<result property="gameId" column="game_id" />
+		<result property="disStart" column="dis_start" />
+		<result property="disEnd" column="dis_end" />
+		<result property="gamePrice" column="game_price" />
+	</resultMap>
+	
+	<select id="discountInWish" parameterType="String" resultMap="DiscountVO">
+		select a.game_id, a.dis_end, b.game_price
+		from discount a
+		inner join game b
+		on (a.GAME_ID = b.GAME_ID)
+		where a.game_id= #{gameId}
+	</select>
+
+</mapper>

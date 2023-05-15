@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="gamecode">
+	
+<!-- 	<resultMap type="CVO" id="codeMap"> -->
+<!-- 		<result column="game_code" property="gameCode"/> -->
+<!-- 		<result column="game_id" property="gameId"/> -->
+<!-- 		<result column="code_use" property="codeUse"/> -->
+<!-- 	</resultMap> -->
+	
+	
+	<insert id="insertCode" parameterType="members.member.vo.GameCodeVO">
+	
+		insert into game_code
+		(game_code, game_id, code_use)
+		values (#{gameCode}, #{gameId}, #{codeUse})
+	
+	</insert>
+
+	<delete id="deleteCode" parameterType="String">
+		delete from game_code
+	    where game_code = #{gameCode}
+
+ 	</delete>
+
+
+	<select id="getAllGameCode" resultType="GameCodeVO">
+		    select B.game_code,
+		           B.game_id,
+		           A.game_name,
+		           B.code_use
+		    from game A, game_code B
+		    where A.game_Id=B.game_Id
+            order by 3 desc
+	</select>
+	
+	<select id="getAllgameNames" resultType="GameCodeVO">
+			select game_id,
+			       game_name
+			       from game
+	</select>
+	
+	
+	<select id="getGameId" resultType="String">
+	
+        select
+        game_id
+        from game
+        where game_name = #{gameName}
+	</select>
+	
+
+	<select id = "getListByStatus" resultType = "GameCodeVO">
+	
+		select *
+		from game_code
+		order by code_use asc
+		
+	</select>
+	
+	<select id="chkGameCode" resultType="int">
+	
+		select count(*) from game_code where game_code = #{gameCode}
+	
+	</select>
+	
+<!-- 	<select id="getGameName" parameterType="String" resultType="String"> -->
+<!-- 		select A.game_name from -->
+<!-- 		game A, game_code B	 -->
+<!-- 		where A.game_id = B.game_id -->
+<!-- 	</select> -->
+	
+</mapper>
+	

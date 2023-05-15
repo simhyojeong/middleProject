@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cart">
+
+	<insert id="insertCart" parameterType="CartVO">
+		insert into CART values(( 'cart' || cart_seq.nextval ), #{memId}, sysdate, #{cartPrice})
+	</insert>
+
+	<insert id="insertCartGame" parameterType="String">
+		insert into cart_game values(( 'cart' || cart_game_seq.nextval ), #{gameId})
+	</insert>
+
+	<select id="getPrice" parameterType="String" resultType="String">
+		select game_price 
+		from game 
+		where game_id = #{gameId} 
+	</select>
+
+	<select id="getCartList" parameterType="String" resultType="CartVO">
+		select distinct a.cart_price, b.game_id, a.cart_id 
+		from cart a 
+		inner join cart_game b 
+		on(a.CART_ID = b.CART_ID) 
+		and a.mem_id= #{memId} 
+	</select>
+
+	<select id="getSelectCart" parameterType="String" resultType="CartVO">
+		select cart_id, cart_price 
+		from cart 
+		where not cart_id in (
+		select a.cart_id 
+		from cart a 
+		inner join orders b 
+		on(a.cart_id = b.cart_id) 
+		)
+		and mem_id = #{memId} 
+	</select>
+	
+	<!-- 사용자의 결제하지않은 장바구니에 해당하는 게임정보 불러오기 -->
+	<select id="getSelectGame" parameterType="String" resultType="String">
+		select game_id 
+		from cart_game 
+		where cart_id = #{cartId} 
+	</select>
+
+	<select id="checkExist" parameterType="CartVO" resultType="String">
+		select a.cart_id 
+		from cart a 
+		inner join cart_game b 
+		on(a.CART_ID = b.CART_ID) 
+		where a.mem_id = #{memId} and b.game_id = #{gameId} 
+	</select>
+
+	<delete id="deleteCart" parameterType="String">
+		delete from cart 
+		where cart_id = #{cartId}
+	</delete>
+
+	<delete id="deleteCartGame" parameterType="String">
+		delete from cart_game 
+		where cart_id = #{cartId}
+	</delete>
+
+	<!-- 주문완료 테이블에 있는 Cart를 조회하는 쿼리 -->
+	<select id="orderList" resultType="String">
+		select cart_id 
+		from orders
+	</select>
+
+</mapper>

@@ -1,0 +1,279 @@
+
+#gameCode-body{
+    background-color: #121212;
+/*     font-size: 0.875rem; */
+
+/*     margin-left: 20px; */
+/*     margin-right : 20px; */
+} 
+
+#gameCode-searchBox {
+	border-radius : 10px;
+	background-color : #121212;
+	border : 1px solid #d32f2f;
+
+	width : 160px;
+
+}
+
+#searchbox-div {
+/* 	margin-bottom : 50px; */
+	display:flex;
+	justify-content:flex-end;
+}
+
+/* .modal-bg {display:none;
+    width:100%;
+    height:100%;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    background: rgba(0, 0, 0, 0.5);z-index:999;} */
+
+/* .modal-wrap-container { */
+/*     color: #ddd; */
+/*     display:none; */
+/*     position:absolute; */
+/*     top:50%;left:50%;transform:translate(-50%,-50%); */
+/*     width:550px; */
+/*     padding: 30px 60px; */
+/*     height: auto; */
+/*     background:#202020; */
+/*     z-index:1000; */
+
+/* } */
+
+
+.title-container {
+    color: #ddd;
+    background-color: #121212 ;
+    padding: 55px 20px 0px;
+/*     border-bottom: 2px solid #ddd; */
+}
+
+.result-container {
+    background-color: #121212;
+    color: #ddd;
+    padding: 0px 20px;
+    /* border: 1px solid #ff8484; */
+    border-rad0ius: 0;
+    width:1000px;
+}
+
+.codeTable {
+	width: 100% !important;
+}
+
+
+.title-container .title {
+    font-size: 32px;
+}
+
+#gamecode-title {
+	margin-bottom : 0px;
+}
+
+.select-gametitle {
+    background-color: #121212;
+    color: #ddd;
+    padding-top: 0;
+    background-position-y: 50%;
+    line-height: 25px;
+    margin-top: 0;
+    width: 200px;
+    height: 50px;
+    /* font-weight: lighter !important; */
+    border: none;
+}
+
+
+.select-gametitle:hover {
+    border: 1px solid #ddd;
+}
+
+.select-status-choose{
+    background-color: #121212;
+    color: #ddd;
+    width: 40px;
+    height: 30px;
+    text-align: left;
+    border: none;
+}
+
+.select-status-choose:hover {
+    border: 1px solid #ddd;
+}
+
+/* 새게임명 추가셀 */
+#row_gameName {
+    width : 250px;
+    height: 30px;
+    background-color: #121212;
+    color: #ddd;
+    border: none;
+}
+
+#row_gameName:hover {
+    border: 1px solid #ddd;
+}
+
+/* 새게임코드 추가셀 */
+#row_gameCode{
+    width : 250px;
+    height: 30px;
+    background-color: #121212;
+    color: #ddd;
+    border: 0;
+}
+
+#row_gameCode:hover {
+    border: 1px solid #ddd;
+}
+
+/* 게임코드 사용여부 추가셀!!! */
+#row_gameStatus {
+	font-size:18px;
+	text-align:center;
+    width : 100px;
+    height: 30px;
+    background-color: #121212;
+    color: #ddd;
+    border: 0;
+}
+
+#row_gameStatus:hover {
+    border: 1px solid #ddd;
+}
+
+table {
+    border-collapse: separate;
+    text-indent: initial; 
+    border-spacing: 2px;
+    
+    
+}
+
+
+.table-header {
+    padding: 15px 8px;
+    line-height: 1.42857143;
+    text-align : left;
+    border-bottom: 2px solid #d32f2f;
+    height:50px;
+    width : 100px;
+}
+
+/* <!--중복적용 확인란 왜적용안되는지 모르겠음 */
+.table-duplicationChk,#table-duplicationChk {
+	width : 65px;
+}
+
+#row_gameCodeChk {
+	width: 65px;
+	border : none;	
+	background-color: #121212;
+}
+ 
+
+#header-th1,#data-th,#data-td {
+    width : 350px;
+}
+
+.table-header-date {
+    padding: 15px 8px;
+    line-height: 1.42857143;
+    text-align : left;
+    border-bottom: 2px solid #d32f2f;
+    width:300px;
+    height:50px;
+}
+
+.table-duplicationChk {
+    border-bottom: 2px solid #d32f2f;
+}
+
+#gamelist-thead{
+	color: #ddd;	
+}
+
+.table-header-status, .table-header-bill {
+    width: 60px;
+    border-bottom: 2px solid #d32f2f;
+    text-align : center;
+}
+
+/* .table-data, #select-gametitle, #row_gameStatus { */
+/* 	font-size : 16px; */
+/* 	padding: 20px 10px; */
+
+/* } */
+
+#table-header-used {
+	text-align : center;	
+}
+#select-gametitle {
+	font-size : 16px;
+    padding: 20px 10px;
+    text-align: left;
+ }
+ 
+#row_gameStatus {
+	font-size : 18px;
+    padding: 20px 10px;
+    text-align: center;
+} 
+
+.table-data {
+	font-size : 16px;
+	padding: 20px 10px;
+	text-align : left;
+}
+
+.table-data-code {
+	text-align: center;
+	font-size: 18px;
+}
+
+.bill-icon-plus, .bill-icon-check {
+	width : 40px;
+}
+
+
+.bill-icon-minus, .bill-icon-plus, .bill-icon-check, .insertCellMinus {
+    text-align: center;
+}
+
+.bill-icon-plus:hover {
+    color: #4496e4;
+}
+
+.bill-icon-minus:hover {
+    color: #e44444;
+}
+
+.bill-icon-check:hover {
+    color: #80ff00;
+}
+
+
+.chkbox, #chkbox {
+    accent-color: #e04747;
+    width:30px;
+}
+
+/* input [type='checkbox'] {
+    color: red;
+    background-color: yellow;
+    accent-color: rgb(60, 60, 60);
+    width:15px;
+    height:30px;
+} */
+
+.newRow-hide-gameId {
+	color: red;
+}
+
+#hide-gameId,.newRow-hide-gameId{
+	display:none;
+}

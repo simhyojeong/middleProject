@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="category">
+
+	<select id="allCategoryList" resultType="categoryDetailVO">
+		select b.detail_id,	a.cate_name, b.detail_name 
+		from category a, category_detail b 
+		where a.cate_id = b.cate_id
+	</select>
+
+	<select id="getDetailId" resultType="String">
+		select fn_detail_id from dual
+	</select>
+
+	<insert id="insertCategory" parameterType="categoryVO">
+		insert into
+		category_detail values(#{detailId}, #{cateId}, #{detailName})
+	</insert>
+
+	<delete id="deleteCategory" parameterType="String">
+		delete from
+		category_detail where detail_id = #{detailId}
+	</delete>
+</mapper>

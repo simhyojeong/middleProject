@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<properties resource="db.properties" />
+
+	<settings>
+		<!-- 데이터 등록시 속성값이 존재하지 않으면 (Null) 부적합한 열 유형 에러 예외 발생함 이 경우 해당타입을 명시적으로 알려주던지 아래와 같이 NULL인 속성에 대하여 특정값으로 자동 설정이 가능함 -->
+		<setting name="jdbcTypeForNull" value="NULL" />
+
+		<!-- DB 칼럼명을 낙타표기업으로 속성명과 자동 매핑 설정하기 -->
+		<setting name="mapUnderscoreToCamelCase" value="true" />
+	</settings>
+
+
+	<typeAliases>
+		<typeAlias alias="AnswerVO" type="questions.answer.vo.AnswerVO"/>
+		<typeAlias alias="FaqVO" type="faq.vo.FaqVO" />
+		<typeAlias alias="MemberVO" type="members.member.vo.MemberVO" />
+		<typeAlias alias="QesVO" type="questions.question.vo.QuestionVO" />
+
+		<typeAlias alias="CartVO" type="orders.cart.vo.CartVO" />
+		<!-- <typeAlias alias="CartGameVO" type="orders.cart.vo.CartGameVO"/> -->
+		<typeAlias alias="CategoryVO" type="games.category.vo.CategoryVO" />
+		<typeAlias alias="CategoryDetailVO" type="games.category.vo.CategoryDetailVO" />
+		<typeAlias alias="DiscountVO" type="games.game.vo.DiscountVO" />
+		<typeAlias alias="GameDetailCategoryVO" type="games.gameDetailCategory.vo.GameDetailCategoryVO" />
+		<typeAlias alias="GameVO" type="games.game.vo.GameVO" />
+		<typeAlias alias="GameCodeVO" type="members.member.vo.GameCodeVO" />
+		<typeAlias alias="GameDetailVO" type="games.game.vo.GameDetailVO" />
+		<typeAlias alias="GameSearchVO" type="games.game.vo.GameSearchVO" />
+
+		<typeAlias alias="PublishVO" type="games.publisher.vo.PublishVO" />
+		<typeAlias alias="PublisherVO" type="games.publisher.vo.PublisherVO" />
+
+		<typeAlias alias="ReviewVO" type="members.review.vo.ReviewVO"/>
+		<typeAlias alias="MyReviewVO" type="members.review.vo.MyReviewVO" />
+
+		<typeAlias alias="NoticeVO" type="notice.vo.NoticeVO"/>
+		<typeAlias alias="OrderVO" type="orders.vo.OrderVO" />
+		<typeAlias alias="QuestionVO" type="questions.question.vo.QuestionVO" />
+
+		<typeAlias alias="WishListVO" type="wishList.vo.WishListVO" />
+	</typeAliases>
+
+	<environments default="dev">
+		<environment id="dev">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${username}" />
+				<property name="password" value="${password}" />
+				<property name="poolMaximumActiveConnections" value="2" />
+				<property name="poolMaximumIdleConnections" value="2" />
+			</dataSource>
+
+
+		</environment>
+	</environments>
+
+	<mappers>
+		<!--매핑 xml의 위치를 알려줌 -->
+		<mapper resource="mapper/answer.xml" />
+		<mapper resource="mapper/gamecode.xml" />
+		<mapper resource="mapper/cart.xml" />
+		<mapper resource="mapper/category.xml" />
+		<mapper resource="mapper/categoryDetail.xml" />
+		<mapper resource="mapper/discount.xml" />
+		<mapper resource="mapper/faq.xml" />
+		<mapper resource="mapper/game.xml" />
+		<mapper resource="mapper/gameDetailCategory.xml" />
+		<mapper resource="mapper/member.xml" />
+		<mapper resource="mapper/notice.xml" />
+		<mapper resource="mapper/orders.xml" />
+		<mapper resource="mapper/publisher.xml" />
+		<mapper resource="mapper/question.xml" />
+		<mapper resource="mapper/review.xml" />
+		<mapper resource="mapper/wishList.xml" />
+	</mappers>
+
+</configuration>
